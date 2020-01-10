@@ -1,0 +1,96 @@
+server:
+    port: 8880
+mybatis:
+    configuration:
+        map-underscore-to-camel-case: true
+        log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+    type-aliases-package: cc.airson.im.server.rest.dao.po
+spring:
+    datasource:
+        druid:
+            name: im-server-rest
+            url: jdbc:mysql://localhost/tech_notebook?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+            username: root
+            password: root
+            driver-class-name: com.mysql.cj.jdbc.Driver
+            filters: stat
+            #最大并发连接数
+            max-active: 20
+            #初始化连接数量
+            initial-size: 1
+            #配置获取连接等待超时的时间
+            max-wait: 1000
+            #最小空闲连接数
+            min-idle: 10
+            #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+            time-between-eviction-runs-millis: 60000
+            #配置一个连接在池中最小生存的时间，单位是毫秒
+            min-evictable-idle-time-millis: 300000
+            validation-query: SELECT 'X'
+            test-while-idle: true
+            test-on-borrow: false
+            test-on-return: false
+            max-open-prepared-statements: 20
+            #打开removeAbandoned功能 WARN : removeAbandoned is true, not use in production
+            remove-abandoned: false
+            #1800秒，也就是30分钟
+            remove-abandoned-timeout: 1800
+            #关闭abanded连接时输出错误日志
+            log-abandoned: true
+    kafka:
+        bootstrap-servers: 172.81.216.81:9092,175.24.103.167:9092
+        #bootstrap-servers: 175.24.103.167:9092
+        listener:
+            missing-topics-fatal: false
+        template:
+            default-topic: tp-default
+        #=============== provider  =======================
+        # 每次批量发送消息的数量
+        producer:
+            retries: 0
+            batch-size: 16384
+            buffer-memory: 33554432
+            # 指定消息key和消息体的编解码方式
+            key-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value-serializer: org.apache.kafka.common.serialization.StringSerializer
+        #=============== consumer  =======================
+        # 指定默认消费者group id
+        consumer:
+            group-id: cg-demo
+            auto-offset-reset: earliest
+            enable-auto-commit: true
+            #auto-commit-interval: 100
+            # 指定消息key和消息体的编解码方式
+            key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    redis:
+        client-name: im-server-rest
+        database: 0
+        host: 172.81.216.81
+        port: 6379
+        password: vfr47ujm
+        lettuce:
+            pool:
+                min-idle: 0
+                max-idle: 8
+                max-wait: 1ms
+    thymeleaf:
+        enabled: false
+        cache: false
+    mvc:
+#        view:
+#            prefix: /static/v/
+#            suffix: .html
+        static-path-pattern: /static/**
+    resources:
+        chain:
+            cache: false
+            enabled: true
+        cache:
+            period: 0
+            cachecontrol:
+                no-store: true
+                no-cache: true
+                max-age: 0
+                s-max-age: 0
+#        static-locations: classpath:/resources/static/**
