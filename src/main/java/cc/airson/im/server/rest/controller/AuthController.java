@@ -31,6 +31,10 @@ public class AuthController {
     //private Logger logger = LoggerFactory.getLogger(getClass());
     private static Logger logger = LoggerFactory.getLogger(AuthController.class);
 
+    static {
+        logger.trace("login domain log");
+    }
+
     @ApiOperation(value = "IM登录", tags = "IM")
     @RequestMapping(value = "login")
     public JSONObject login(@Valid Login login, BindingResult result) {
