@@ -47,7 +47,8 @@ spring:
             #关闭abanded连接时输出错误日志
             log-abandoned: true
     kafka:
-        bootstrap-servers: ${custom.server1}:9092,${custom.server2}:9092
+        #bootstrap-servers: ${custom.server1}:9092,${custom.server2}:9092
+        bootstrap-servers: ${custom.server1}:9093,${custom.server2}:9093
         #bootstrap-servers: 175.24.103.167:9092
         listener:
             missing-topics-fatal: false
