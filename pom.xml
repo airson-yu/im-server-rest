@@ -36,10 +36,10 @@
             <artifactId>spring-cloud-sleuth</artifactId>
             <version>3.0.0.RELEASE</version>
         </dependency>-->
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
@@ -172,7 +172,7 @@
 
     </dependencies>
 
-    <!--<dependencyManagement>
+    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -182,7 +182,7 @@
                 <scope>import</scope>
             </dependency>
         </dependencies>
-    </dependencyManagement>-->
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -191,15 +191,15 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <plugin>
+            <!--<plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.2.2</version>
-                <!--将插件绑定在某个phase执行-->
+                &lt;!&ndash;将插件绑定在某个phase执行&ndash;&gt;
                 <executions>
                     <execution>
                         <id>build-image</id>
-                        <!--将插件绑定在package这个phase上。也就是说，用户只需执行mvn package ，就会自动执行mvn docker:build-->
+                        &lt;!&ndash;将插件绑定在package这个phase上。也就是说，用户只需执行mvn package ，就会自动执行mvn docker:build&ndash;&gt;
                         <phase>package</phase>
                         <goals>
                             <goal>build</goal>
@@ -207,31 +207,31 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <!--指定生成的镜像名-->
+                    &lt;!&ndash;指定生成的镜像名&ndash;&gt;
                     <imageName>airson/${project.artifactId}</imageName>
-                    <!--指定标签-->
+                    &lt;!&ndash;指定标签&ndash;&gt;
                     <imageTags>
                         <imageTag>latest</imageTag>
                     </imageTags>
-                    <!-- 指定 Dockerfile 路径 ${project.basedir}：项目根路径下-->
+                    &lt;!&ndash; 指定 Dockerfile 路径 ${project.basedir}：项目根路径下&ndash;&gt;
                     <dockerDirectory>${project.basedir}</dockerDirectory>
-                    <!--指定远程 docker api地址-->
+                    &lt;!&ndash;指定远程 docker api地址&ndash;&gt;
                     <dockerHost>http://172.81.216.81:2375</dockerHost>
-                    <!-- 这里是复制 jar 包到 docker 容器指定目录配置 -->
+                    &lt;!&ndash; 这里是复制 jar 包到 docker 容器指定目录配置 &ndash;&gt;
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
-                            <!--jar 包所在的路径 此处配置的 即对应 target 目录-->
+                            &lt;!&ndash;jar 包所在的路径 此处配置的 即对应 target 目录&ndash;&gt;
                             <directory>${project.build.directory}</directory>
-                            <!-- 需要包含的 jar包 ，这里对应的是 Dockerfile中添加的文件名　-->
+                            &lt;!&ndash; 需要包含的 jar包 ，这里对应的是 Dockerfile中添加的文件名　&ndash;&gt;
                             <include>${project.build.finalName}.jar</include>
                         </resource>
                     </resources>
-                    <!-- 以下两行是为了docker push到DockerHub使用的。 -->
-                    <!--<serverId>docker-hub</serverId>-->
-                    <!--<registryUrl>https://index.docker.io/v1</registryUrl>-->
+                    &lt;!&ndash; 以下两行是为了docker push到DockerHub使用的。 &ndash;&gt;
+                    &lt;!&ndash;<serverId>docker-hub</serverId>&ndash;&gt;
+                    &lt;!&ndash;<registryUrl>https://index.docker.io/v1</registryUrl>&ndash;&gt;
                 </configuration>
-            </plugin>
+            </plugin>-->
 
         </plugins>
     </build>

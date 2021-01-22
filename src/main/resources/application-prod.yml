@@ -6,7 +6,7 @@ custom:
     eureka3: http://${custom.server1}:8762/eureka/
     eureka4: http://${custom.server2}:8762/eureka/
 server:
-    port: 8880
+    port: 8081
 mybatis:
     configuration:
         map-underscore-to-camel-case: true
@@ -19,8 +19,8 @@ spring:
         druid:
             name: im-server-rest
             url: jdbc:mysql://localhost/tech_im?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
-            username: root
-            password: root
+            username: lh
+            password: Keep123!
             driver-class-name: com.mysql.cj.jdbc.Driver
             filters: stat
             #最大并发连接数
