@@ -22,6 +22,7 @@ public class IndexController {
     public JSONObject index() {
         JSONObject json = new JSONObject();
         json.put("tip", "this is im rest server");
+        logger.debug("rest server index");
         return Result.success(json);
     }
 
