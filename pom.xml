@@ -12,6 +12,7 @@
     <artifactId>im-server-rest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>im-server-rest</name>
+    <packaging>jar</packaging>
     <description>REST Server of IM Project</description>
 
     <properties>

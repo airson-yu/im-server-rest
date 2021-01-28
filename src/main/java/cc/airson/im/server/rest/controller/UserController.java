@@ -1,6 +1,7 @@
 package cc.airson.im.server.rest.controller;
 
 import cc.airson.im.server.rest.handler.UserHandler;
+import cc.airson.im.server.rest.tools.REST;
 import cc.airson.im.server.rest.tools.Result;
 import cc.airson.im.server.rest.vo.UserVO;
 import com.alibaba.fastjson.JSONObject;
@@ -41,7 +42,7 @@ public class UserController {
         logger.debug("received cmd user add:{}", userVO);
         JSONObject json = new JSONObject();
         userHandler.addUser(json, userVO);
-        return Result.success_rsp(json, "user_add");
+        return REST.success(json, "user_add");
     }
 
     @ApiOperation(value = "修改用户", tags = "user")
@@ -50,7 +51,7 @@ public class UserController {
         logger.debug("received cmd user update:{}", userVO);
         JSONObject json = new JSONObject();
         userHandler.updateUser(json, userVO);
-        return Result.success_rsp(json, "user_update");
+        return REST.success(json, "user_update");
     }
 
     @ApiOperation(value = "加载用户", tags = "user")
@@ -59,7 +60,7 @@ public class UserController {
         logger.debug("received user load:{}", uid);
         JSONObject json = new JSONObject();
         userHandler.load(json, uid);
-        return Result.success_rsp(json, "user_load");
+        return REST.success(json, "user_load");
     }
 
 }

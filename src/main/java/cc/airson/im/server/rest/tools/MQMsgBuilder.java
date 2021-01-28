@@ -1,4 +1,4 @@
-package cc.airson.im.server.rest.vo;
+package cc.airson.im.server.rest.tools;
 
 
 import cc.airson.im.server.rest.dao.po.User;

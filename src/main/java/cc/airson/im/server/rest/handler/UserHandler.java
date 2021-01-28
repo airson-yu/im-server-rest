@@ -1,15 +1,11 @@
 package cc.airson.im.server.rest.handler;
 
-import cc.airson.im.server.rest.advice.DomainException;
 import cc.airson.im.server.rest.config.Const;
-import cc.airson.im.server.rest.config.ResponseCode;
-import cc.airson.im.server.rest.controller.UserController;
 import cc.airson.im.server.rest.dao.po.User;
 import cc.airson.im.server.rest.service.UserService;
+import cc.airson.im.server.rest.tools.MQMsgBuilder;
 import cc.airson.im.server.rest.tools.Result;
-import cc.airson.im.server.rest.tools.SecurityUtil;
 import cc.airson.im.server.rest.vo.*;
-import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
@@ -19,8 +15,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import java.security.NoSuchAlgorithmException;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
