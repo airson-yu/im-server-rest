@@ -15,9 +15,11 @@ public class Const {
     public static final String MQ_INSTANCE       = "kafka";
     public static final String MQ_GROUP_DEMO     = "cg-demo";
     public static final String MQ_GROUP_IM       = "cg-im";
+    public static final String MQ_GROUP_USER     = "cg-user";
     public static final String MQ_GROUP_NOTEBOOK = "cg-notebook";
     public static final String MQ_TOPIC_DEMO     = "t-demo";
     public static final String MQ_TOPIC_IM       = "t-im";
+    public static final String MQ_TOPIC_USER     = "t-user";
     public static final String MQ_TOPIC_REDIS    = "t-redis";
     public static final String MQ_TOPIC_NOTEBOOK = "t-notebook";
 

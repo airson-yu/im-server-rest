@@ -81,12 +81,12 @@ spring:
         password: vfr47ujm
         cluster:
             nodes:
-              - 172.81.216.81:6380
-              - 172.81.216.81:6381
-              - 172.81.216.81:6382
-              - 175.24.103.167:6380
-              - 175.24.103.167:6381
-              - 175.24.103.167:6382
+                - ${custom.server1}:6380
+                - ${custom.server1}:6381
+                - ${custom.server1}:6382
+                - ${custom.server2}:6380
+                - ${custom.server2}:6381
+                - ${custom.server2}:6382
             max-redirects: 4
         lettuce:
             pool:

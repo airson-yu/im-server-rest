@@ -76,14 +76,24 @@ spring:
     redis:
         client-name: im-server-rest
         database: 0
-        host: ${custom.server1}
-        port: 6379
+        #host: ${custom.server1}
+        #port: 6379
         password: vfr47ujm
+        cluster:
+            nodes:
+                - ${custom.server1}:6380
+                - ${custom.server1}:6381
+                - ${custom.server1}:6382
+                - ${custom.server2}:6380
+                - ${custom.server2}:6381
+                - ${custom.server2}:6382
+            max-redirects: 4
         lettuce:
             pool:
                 min-idle: 0
                 max-idle: 8
                 max-wait: 1ms
+                max-active: 10
     thymeleaf:
         enabled: false
         cache: false
