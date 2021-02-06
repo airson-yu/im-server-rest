@@ -23,4 +23,16 @@ public class UserService {
         return mapper.selectForLogin(username, password);
     }
 
+    public int insert(User user){
+        return mapper.insert(user);
+    }
+
+    public int update(User user){
+        return mapper.update(user);
+    }
+
+    public int delete(long id){
+        return mapper.delete(id);
+    }
+
 }

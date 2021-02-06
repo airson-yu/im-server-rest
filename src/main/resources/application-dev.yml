@@ -20,7 +20,7 @@ spring:
             name: im-server-rest
             url: jdbc:mysql://localhost/tech_im?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
             username: root
-            password: root
+            password: vfr47ujm
             driver-class-name: com.mysql.cj.jdbc.Driver
             filters: stat
             #最大并发连接数
@@ -47,7 +47,8 @@ spring:
             #关闭abanded连接时输出错误日志
             log-abandoned: true
     kafka:
-        bootstrap-servers: ${custom.server1}:9092,${custom.server2}:9092
+        #bootstrap-servers: ${custom.server1}:9092,${custom.server2}:9092
+        bootstrap-servers: ${custom.server1}:9093,${custom.server2}:9093
         #bootstrap-servers: 175.24.103.167:9092
         listener:
             missing-topics-fatal: false
@@ -80,12 +81,12 @@ spring:
         password: vfr47ujm
         cluster:
             nodes:
-              - 172.81.216.81:6380
-              - 172.81.216.81:6381
-              - 172.81.216.81:6382
-              - 175.24.103.167:6380
-              - 175.24.103.167:6381
-              - 175.24.103.167:6382
+                - ${custom.server1}:6380
+                - ${custom.server1}:6381
+                - ${custom.server1}:6382
+                - ${custom.server2}:6380
+                - ${custom.server2}:6381
+                - ${custom.server2}:6382
             max-redirects: 4
         lettuce:
             pool:
@@ -107,17 +108,18 @@ spring:
         #            prefix: /static/v/
         #            suffix: .html
         static-path-pattern: /static/**
-    resources:
-        chain:
-            cache: false
-            enabled: true
-        cache:
-            period: 0
-            cachecontrol:
-                no-store: true
-                no-cache: true
-                max-age: 0
-                s-max-age: 0
+    web:
+        resources:
+            chain:
+                cache: false
+                enabled: true
+            cache:
+                period: 0
+                cachecontrol:
+                    no-store: true
+                    no-cache: true
+                    max-age: 0
+                    s-max-age: 0
 #        static-locations: classpath:/resources/static/**
 eureka:
     client:

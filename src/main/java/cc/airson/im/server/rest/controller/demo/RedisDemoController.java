@@ -1,6 +1,7 @@
 package cc.airson.im.server.rest.controller.demo;
 
 import cc.airson.im.server.rest.config.Const;
+import cc.airson.im.server.rest.tools.Result;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,7 +66,7 @@ public class RedisDemoController {
         ops.set(message, "redis-message:" + message);
         kafkaTemplate.send(Const.MQ_TOPIC_REDIS, message);
 
-        return json;
+        return Result.success(json);
 
     }
 

@@ -26,15 +26,15 @@ public interface UserMapper {
     Page<User> list();
 
     //@SelectKey(statement = "select last_insert_id()", keyProperty = "id", before = false, resultType = Integer.class)
-    @Insert("INSERT INTO tech_user(account, user_name, phone, password, create_time) VALUES(#{account}, #{user_name}, #{phone}, #{password}, NOW())")
+    @Insert("INSERT INTO tech_user(user_name, phone, password, create_time) VALUES(#{userName}, #{phone}, #{password}, NOW())")
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void insert(User obj);
+    int insert(User obj);
 
-    @Update("UPDATE tech_user SET title=#{title},content=#{content} WHERE id = #{id}")
-    void update(User obj);
+    @Update("UPDATE tech_user SET user_name=#{userName},phone=#{phone},update_time=NOW() WHERE id = #{id}")
+    int update(User obj);
 
     @Delete("DELETE FROM tech_user WHERE id= #{id}")
-    void delete(Long id);
+    int delete(Long id);
 
     /*List<Article> selectDetailListByCondition(Map<String, Object> map);
 

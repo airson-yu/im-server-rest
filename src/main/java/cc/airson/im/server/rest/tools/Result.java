@@ -1,10 +1,12 @@
 package cc.airson.im.server.rest.tools;
 
 import cc.airson.im.server.rest.config.ResponseCode;
+import cc.airson.im.server.rest.controller.UserController;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,6 +33,8 @@ public class Result {
     public final static String result_type_key   = "_resultType";
     public final static String result_type_obj   = "_result_obj";
     public final static String result_type_array = "_result_array";
+
+    private static Logger logger = LoggerFactory.getLogger(Result.class);
 
     /**
      * 用户session过期，返回json
@@ -193,6 +197,12 @@ public class Result {
      */
     public static JSONObject success(JSONObject json) {
         return success(json, BaseTip.msg_operation_success, BaseTip.code_operation_success);
+    }
+
+    public static JSONObject success_rsp(JSONObject json, String uri) {
+        json = success(json, BaseTip.msg_operation_success, BaseTip.code_operation_success);
+        logger.debug("response {}:{}", uri, json);
+        return json;
     }
 
     /**
