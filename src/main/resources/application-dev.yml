@@ -93,6 +93,12 @@ spring:
                 max-idle: 8
                 max-wait: 1ms
                 max-active: 10
+    elasticsearch:
+        rest:
+            uris: http://175.24.103.167:9200
+            read-timeout: 30s
+            username: test
+            password: test
     thymeleaf:
         enabled: false
         cache: false

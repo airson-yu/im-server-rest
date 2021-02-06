@@ -83,6 +83,12 @@ spring:
                 min-idle: 0
                 max-idle: 8
                 max-wait: 1ms
+    elasticsearch:
+        rest:
+            uris: http://localhost:9200
+            read-timeout: 30s
+            username: test
+            password: test
     thymeleaf:
         enabled: false
         cache: false
@@ -92,16 +98,16 @@ spring:
         #            suffix: .html
         static-path-pattern: /static/**
     resources:
-        chain:
-            cache: false
-            enabled: true
-        cache:
-            period: 0
-            cachecontrol:
-                no-store: true
-                no-cache: true
-                max-age: 0
-                s-max-age: 0
+            chain:
+                cache: false
+                enabled: true
+            cache:
+                period: 0
+                cachecontrol:
+                    no-store: true
+                    no-cache: true
+                    max-age: 0
+                    s-max-age: 0
 #        static-locations: classpath:/resources/static/**
 eureka:
     client:
